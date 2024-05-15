@@ -33,6 +33,11 @@ usethis::use_github()
 ## Start plot deco
 
 ```{r}
+ggplot(data = whale_data) + 
+  geom_point(mapping = aes(x = Date, y = no..whales.passing,colour = Location,las=2))
+```
+
+```{r}
 
 ```
 
