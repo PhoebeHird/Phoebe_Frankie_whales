@@ -10,21 +10,29 @@ knitr::opts_chunk$set(echo = TRUE)
 ```
 
 ## R Markdown
-R markdown for whale Plot decronstruction 
-imported whale data .csv file to rebuild the plot 
+R markdown for whale Plot deconstruction. The plot came from a published paper in Population Ecology journal. https://esj-journals.onlinelibrary.wiley.com/doi/full/10.1002/1438-390X.1014
 
-This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+Plot caption: Whale sighting data comparison between Norm's Seat and Frenchman's lookout in 2010 over 120 hours of observation.
 
-When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+Issues with the original plot:
+1. colour scheme is poor
+2. used a bar plot for continous (time) data 
+3. other presentation issues (grid lines)
 
-```{r cars}
+The plan is to recreate the plot with geom smooth lines, correct the colour scheme. 
+
+We used a Plot digitiser online tool to extract data from the image. 
+
+We then imported the extracted data as a .csv file to rebuild the plot.
+
+
+```{r}
 usethis::use_github()
 ```
 
 ## Start plot deco
 
-```{r pressure, echo=FALSE}
-plot(pressure)
+```{r}
+
 ```
 
-Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
