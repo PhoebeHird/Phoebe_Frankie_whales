@@ -28,13 +28,14 @@ We then imported the extracted data as a .csv file to rebuild the plot.
 
 ```{r}
 usethis::use_github()
+library(tidyverse)
 ```
 
 ## Start plot deco
 
 ```{r}
 ggplot(data = whale_data) + 
-  geom_point(mapping = aes(x = Date, y = no..whales.passing,colour = Location,las=2))
+  geom_point(mapping = aes(x = Date, y = no..whales.passing,colour = Location, ylab="Noo. Whales Passing"))
 ```
 
 ```{r}
