@@ -28,6 +28,7 @@ We then imported the extracted data as a .csv file to rebuild the plot.
 
 ```{r}
 usethis::use_github()
+usethis::use_git_remote("origin", url = NULL, overwrite = TRUE)`
 library(tidyverse)
 ```
 
