@@ -25,20 +25,31 @@ We used a Plot digitiser online tool to extract data from the image.
 
 We then imported the extracted data as a .csv file to rebuild the plot.
 
-
 ```{r}
-usethis::use_github()
-usethis::use_git_remote("origin", url = NULL, overwrite = TRUE)`
+library(tidyverse)
 ```
+
 
 ## Start plot deco
-
 ```{r}
-ggplot(data = whale_data) + 
-  geom_point(mapping = aes(x = Date, y = no..whales.passing,colour = Location, ylab="Noo. Whales Passing"))
+whale_data
 ```
 
 ```{r}
+
+ggplot(data = whale_data_edit, mapping = aes(x = Date, y = no..whales.passing)) + 
+  geom_point(mapping = aes(color = Location)) + 
+  geom_smooth(aes(x=as.numeric(factor(Date)), color=Location), se =FALSE) +
+  theme_classic()+
+  theme(axis.text.x = element_text(angle=90, hjust=1))+labs(
+    x = "Date",
+    y = "No. whales passing",)+
+  scale_fill_brewer(palette="Identity")
+
+```
+
+```{r}
+ggsave("Plot_deco_PF.pdf")
 
 ```
 
