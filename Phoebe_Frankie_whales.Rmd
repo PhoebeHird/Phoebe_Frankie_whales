@@ -36,7 +36,7 @@ whale_data
 ```
 
 ```{r}
-ggplot(data = whale_data_edit, mapping = aes(x = Date, y = no..whales.passing)) + 
+plot_deco_whales <- ggplot(data = whale_data_edit, mapping = aes(x = Date, y = no..whales.passing)) + 
   geom_point(mapping = aes(color = Location)) + 
   geom_smooth(aes(x=as.numeric(factor(Date)), color=Location), se =FALSE) +
   theme_classic()+
@@ -48,7 +48,7 @@ ggplot(data = whale_data_edit, mapping = aes(x = Date, y = no..whales.passing)) 
 ```
 
 ```{r}
-ggsave("Plot_deco_PF.pdf")
+ggsave(plot_deco_whales, filename = "Plot_deco_whales.jpg", width=300,height=200, units="mm")
 
 ```
 # Assignment 2 work
@@ -60,15 +60,20 @@ data <- read_csv("TurtlesFINAL.csv")
 library(tidyverse)
 ```
 ```{r}
-ggplot(data = TurtlesFINAL, mapping = aes(x = Year, y = Turtles)) + 
-  geom_point(mapping = aes(color = Location)) +
-  geom_smooth(aes(=Location)) +
+turtle_plot <- ggplot(data = TurtlesFINAL, mapping = aes(x = Year, y = Turtles)) + 
+  geom_point(aes(color=Location)) +
+  geom_smooth(aes(color=Location)) +
 scale_color_manual(values=c("magenta","orange","blue"))+
   theme_classic()+
   labs(
     x = "Year",
     y = "Turtles (count)",)+
-  labs(title = "Fuel efficiency generally decreases with engine size")
+  labs(title = "Turtles caught by Shark Control Program (SCP) over time by location",subtitle="Turtles are a non-target species of the SCP",caption = "Data from QFISH"
+)
 
+```
+
+```{r}
+ggsave(turtle_plot, filename = "Turtle_catch.jpg", width=300,height=200, units="mm")
 ```
 
