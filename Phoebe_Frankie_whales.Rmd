@@ -36,7 +36,6 @@ whale_data
 ```
 
 ```{r}
-
 ggplot(data = whale_data_edit, mapping = aes(x = Date, y = no..whales.passing)) + 
   geom_point(mapping = aes(color = Location)) + 
   geom_smooth(aes(x=as.numeric(factor(Date)), color=Location), se =FALSE) +
@@ -50,6 +49,26 @@ ggplot(data = whale_data_edit, mapping = aes(x = Date, y = no..whales.passing)) 
 
 ```{r}
 ggsave("Plot_deco_PF.pdf")
+
+```
+# Assignment 2 work
+Exported turtle data from QFISH and tidied it in Excel before uploading into R using the readr package to load in the .csv file. 
+
+```{r}
+library(readr)
+data <- read_csv("TurtlesFINAL.csv")
+library(tidyverse)
+```
+```{r}
+ggplot(data = TurtlesFINAL, mapping = aes(x = Year, y = Turtles)) + 
+  geom_point(mapping = aes(color = Location)) +
+  geom_smooth(aes(=Location)) +
+scale_color_manual(values=c("magenta","orange","blue"))+
+  theme_classic()+
+  labs(
+    x = "Year",
+    y = "Turtles (count)",)+
+  labs(title = "Fuel efficiency generally decreases with engine size")
 
 ```
 
