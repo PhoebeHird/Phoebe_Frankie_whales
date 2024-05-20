@@ -19,20 +19,24 @@ Issues with the original plot:
 2. used a bar plot for continous (time) data 
 3. other presentation issues (grid lines)
 
-The plan is to recreate the plot with geom smooth lines, correct the colour scheme. 
+The plan is to recreate the plot as a scatter point plot with geom_smooth lines, and correct the colour scheme. 
 
 We used a Plot digitiser online tool to extract data from the image. 
 
 We then imported the extracted data as a .csv file to rebuild the plot.
+------------------------------------------------------------------------_
+
+# Load tidyverse package
 
 ```{r}
 library(tidyverse)
+getwd()
 ```
-
-# Start plot deco
+# Start plot deco, load in the data
 ```{r}
-whale_data
+#data <- read_csv("whale_data_edit")
 ```
+# Build the plot
 
 ```{r}
 plot_deco_whales <- ggplot(data = whale_data_edit, mapping = aes(x = Date, y = no..whales.passing)) + 
@@ -49,7 +53,7 @@ plot_deco_whales <- ggplot(data = whale_data_edit, mapping = aes(x = Date, y = n
 )
 plot_deco_whales
 ```
-Save the plot using ggsave
+# Save the plot using ggsave
 
 ```{r}
 ggsave(plot_deco_whales, filename = "Plot_deco_whales.jpg", width=300,height=200, units="mm")
@@ -60,11 +64,15 @@ ggsave(plot_deco_whales, filename = "Plot_deco_whales.jpg", width=300,height=200
 Exported turtle data from QFISH and tidied it in Excel. We decided to focus on three locations to minimise too much data in the plot and making it unreadable. 
 We then uploading into R using the readr package to load in the .csv file. 
 
+# Load in the data
+
 ```{r}
 library(readr)
 data <- read_csv("TurtlesFINAL.csv")
 library(tidyverse)
 ```
+# Build the plot 
+
 ```{r}
 turtle_plot <- ggplot(data = TurtlesFINAL, mapping = aes(x = Year, y = Turtles)) + 
   geom_point(color="white",shape=21,size=3,aes(fill=factor(Location))) +
@@ -80,13 +88,13 @@ turtle_plot <- ggplot(data = TurtlesFINAL, mapping = aes(x = Year, y = Turtles))
 )
 turtle_plot
 ```
-
+# Save the plot using ggsave
 ```{r}
 ggsave(turtle_plot, filename = "Turtle_catch.jpg", width=300,height=200, units="mm")
 ```
 To plot the data we used ggplot to create a plot with points and geom_smooth lines. We coloured these lines and points by Location manually and changed the theme of the plot. We then added a title, subtitle and caption for the plot. 
 
-We then saved the plot to the correct dimensions useing ggsave function. 
+We then saved the plot to the correct dimensions using ggsave function. 
 
 The plot shows the number of turtles caught by the Shark Control Program in three locations (Gold Coast, Townsville and North Stradbroke Island) over time from 2000 t0 2024. The three locations differ in the turtle catch and differ over time. 
 
