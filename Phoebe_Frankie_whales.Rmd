@@ -34,7 +34,7 @@ getwd()
 ```
 # Start plot deco, load in the data
 ```{r}
-#data <- read_csv("whale_data_edit")
+data <- read_csv("../Phoebe_Frankie_whales/whale_data_edit.csv")
 ```
 # Build the plot
 
